@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("assets/fonts/Inter-VariableFont_wght.ttf") format(truetype);
+}
+
+:root {
+  --font-family-default: "Inter", sans-serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  --fs-400: 1.125rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 1.75rem;
+  --fs-800: 2rem;
+  --fs-900: 3rem;
+
+  --clr-primary: rgb(81, 31, 80);
+  --clr-headline-desc: rgb(149, 136, 148);
+  --clr-bg-rating-item: rgb(247, 242, 248);
+  --clr-user-state: rgb(180, 80, 146);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+@media (min-width: 600px) {
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  padding: 4rem 6rem;
+  /* background-color: pink; */
+  position: relative;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.headline .large-text {
+  max-width: 20rem;
+  color: var(--clr-primary);
+  font-size: var(--fs-900);
+  font-weight: var(--fw-bold);
+  margin-bottom: 1rem;
+}
+
+.headline .small-text {
+  max-width: 24rem;
+  color: var(--clr-headline-desc);
+}
+
+.rating-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+.rating-item {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: end;
+  width: 28rem;
+}
+
+.rating-item[data-rating-item-key="item-1"] {
+  margin-right: 8rem;
+}
+
+.rating-item[data-rating-item-key="item-2"] {
+  margin-right: 4rem;
+}
+
+/* Was added to create staircase layout for rating items */
+.rating-item-content {
+  background-color: var(--clr-bg-rating-item);
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  display: flex;
+}
+
+.stars {
+  display: flex;
+}
+
+.stars svg {
+  margin-right: 0.5rem;
+}
+
+.stars svg:last-of-type {
+  margin-right: 0;
+}
+
+.rating-item-text {
+  padding: 0 1rem;
+  color: var(--clr-primary);
+  font-weight: var(--fw-bold);
+}
+
+.review-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-item {
+  /* height: 16rem; */
+  width: 31%;
+  background-color: var(--clr-primary);
+  border-radius: 0.5rem;
+  padding: 2.25rem 2rem;
+}
+
+.user-profile {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.user-photo-container {
+  width: 3rem;
+  aspect-ratio: 1 /1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-info {
+  margin-left: 1.5rem;
+}
+
+.user-name {
+  color: ghostwhite;
+  font-weight: var(--fw-bold);
+}
+
+.user-state {
+  color: var(--clr-user-state);
+}
+
+.user-comment {
+  color: ghostwhite;
+}
+
+.bg-pattern-top {
+  position: absolute;
+  z-index: -1;
+  width: 30%;
+}
+
+.bg-pattern-bottom {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  height: 90%;
+}
