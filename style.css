@@ -1,28 +1,18 @@
-@font-face {
-  font-family: "Inter";
-  font-display: swap;
-  font-weight: 100 900;
-  src: url("assets/fonts/Inter-VariableFont_wght.ttf") format(truetype);
-}
-
 :root {
-  --font-family-default: "Inter", sans-serif;
+  --font-family-default: "League Spartan", sans-serif;
 
   --fw-regular: 500;
   --fw-bold: 700;
   --fw-black: 800;
 
-  --fs-400: 1.125rem;
-  --fs-500: 1.25rem;
-  --fs-600: 1.5rem;
-  --fs-700: 1.75rem;
-  --fs-800: 2rem;
-  --fs-900: 3rem;
+  --fs-400: 0.8125rem;
+  --fs-500: 0.9625rem;
+  --fs-900: 2rem;
 
-  --clr-primary: rgb(81, 31, 80);
-  --clr-headline-desc: rgb(149, 136, 148);
-  --clr-bg-rating-item: rgb(247, 242, 248);
-  --clr-user-state: rgb(180, 80, 146);
+  --clr-primary: hsl(300, 43%, 22%);
+  --clr-headline-desc: hsl(303, 10%, 53%);
+  --clr-bg-rating-item: hsl(300, 24%, 96%);
+  --clr-user-state: hsl(333, 80%, 67%);
 }
 
 *,
@@ -42,25 +32,71 @@ svg {
   max-width: 100%;
 }
 
-@media (min-width: 600px) {
+body {
+  font-family: var(--font-family-default);
+  padding: 5rem 2rem;
+}
+
+@media (min-width: 60rem) {
+  :root {
+    --fs-900: 3rem;
+  }
+
   body {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
   }
 }
 
 .container {
   max-width: 1280px;
-  padding: 4rem 6rem;
   /* background-color: pink; */
   position: relative;
+  background-image: url(./assets/images/bg-pattern-top-desktop.svg),
+    url(./assets/images/bg-pattern-bottom-desktop.svg);
+  background-position: top left, bottom right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: max(50%, 400px), 80%;
 }
 
+/* @media (min-width: 60rem) {
+  .container {
+    background-image: url(./assets/images/bg-pattern-top-desktop.svg),
+      url(./assets/images/bg-pattern-bottom-desktop.svg);
+    background-position: top left, bottom right;
+    background-repeat: no-repeat, no-repeat;
+    background-size: max(50%, 400px), 80%;
+  }
+} */
+
 .top-section {
+  margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 4rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .top-section {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 60rem) {
+  .headline {
+    margin-bottom: 0;
+    align-items: start;
+    text-align: start;
+  }
 }
 
 .headline .large-text {
@@ -71,31 +107,50 @@ svg {
   margin-bottom: 1rem;
 }
 
+@media (min-width: 60rem) {
+  .headline .large-text {
+    line-height: 1;
+  }
+}
+
 .headline .small-text {
   max-width: 24rem;
   color: var(--clr-headline-desc);
+  line-height: 1.5;
 }
 
-.rating-group {
+/* .rating-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: end;
-}
+} */
 
 .rating-item {
-  display: flex;
   margin-bottom: 1rem;
-  justify-content: end;
   width: 28rem;
 }
 
-.rating-item[data-rating-item-key="item-1"] {
-  margin-right: 8rem;
-}
+@media (min-width: 60rem) {
+  .rating-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+  }
 
-.rating-item[data-rating-item-key="item-2"] {
-  margin-right: 4rem;
+  .rating-item {
+    display: flex;
+    justify-content: end;
+  }
+
+  .rating-item[data-rating-item-key="item-1"] {
+    margin-right: 8rem;
+  }
+
+  .rating-item[data-rating-item-key="item-2"] {
+    margin-right: 4rem;
+  }
 }
 
 /* Was added to create staircase layout for rating items */
@@ -104,6 +159,15 @@ svg {
   border-radius: 0.5rem;
   padding: 1rem 2rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 60rem) {
+  .rating-item-content {
+    flex-direction: row;
+  }
 }
 
 .stars {
@@ -126,15 +190,40 @@ svg {
 
 .review-group {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 60rem) {
+  .review-group {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 }
 
 .review-item {
   /* height: 16rem; */
-  width: 31%;
   background-color: var(--clr-primary);
   border-radius: 0.5rem;
   padding: 2.25rem 2rem;
+}
+
+@media (max-width: 60rem) {
+  .review-item {
+    max-width: 25rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .review-item:nth-child(2) {
+    transform: translateY(1rem);
+  }
+
+  .review-item:last-child {
+    transform: translateY(2rem);
+  }
 }
 
 .user-profile {
